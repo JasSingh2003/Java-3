@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <style>
+        #loginForm {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #loginForm h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #loginForm form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #loginForm label {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        #loginForm input {
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #loginForm button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #loginForm button:hover {
+            background-color: #2980b9;
+        }
+
+        #loginForm p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #loginForm a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        #loginForm a:hover {
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<form method="post" th:action="@{/login}">
+    <h2>Login</h2>
+    <div id="loginForm">
+        <form action="/login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <button type="submit">Login</button>
+            <div th:if="${param.error}">
+                <div class="error">
+                    Invalid credentials
+                </div>
+            </div>
+
+            <div th:if="${param.logout}">
+                <div class="success">
+                    You have been logged out
+                </div>
+            </div>
+        </form>
+        <p>Don't have an account? <a href="/register">Register here.</a></p>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2; /* Light gray background */
+        color: #333; /* Dark text color */
+        margin: 0;
+        padding: 0;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff; /* White form background */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    }
+
+    form input[type="text"],
+    form input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    form input[type="submit"] {
+        background-color: #3498db; /* Green submit button */
+        color: white;
+        cursor: pointer;
+    }
+
+    form input[type="submit"]:hover {
+        background-color: #3498db; /* Darker green on hover */
+    }
+
+    /* Logout form */
+    form[action="/logout"] {
+        margin-top: 20px;
+    }
+
+</style>
+<body>
+<form method="post" action="" th:action="@{/insertWatchAdmin}"
+      th:object="${watch}">
+    Watch ID: <input type="text" name="watchID" th:field="*{watchId}">
+    Brand: <input type ="text" name="author" th:field="*{brand}"/>
+    Price: <input type="text" name="address" th:field="*{price}" /><br>
+    Stock Quantity: <input type="text" name="stock" th:field="*{stockQuantity}">
+    Description: <input type="text" name="description" th:field="*{description}">
+    Rating: <input type="text" name="address" th:field="*{rating}" /><br>
+    <input type="submit" value="Add to store!" />
+</form>
+<form method="post" th:action="@{/logout}">
+
+    <input type="submit" value="Logout" />
+</form>
+</body>
+</html>
